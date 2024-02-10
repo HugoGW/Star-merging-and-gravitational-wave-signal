@@ -6,7 +6,7 @@ I assume in my simulation that the stars are immersed in a "fluid" filling all s
 
 Let's start with pen and paper to numerically simulate the Newtonian equations for our compact binary.
 
-We use the 2nd Newton's law : $\displaystyle \sum_k \vec{F}_k = m \vec{a}$ which gives us the equation $\displaystyle m \vec{a} = G \frac{Mm}{r^3} \vec{r} + k \vec{v}$
+We use the 2nd Newton's law : $\displaystyle \sum_k \vec{F}_k = m \vec{a}$ which gives us the equation $\displaystyle m \vec{a} = G \frac{Mm}{r^3} \vec{r} - k \vec{v}$
 
 In cartesian coordinates, the system of equation is quite the same than the one from the solar system : 
 
