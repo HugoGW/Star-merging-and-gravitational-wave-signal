@@ -39,7 +39,7 @@ The more the distance deacreases because of the friction, the more the velocity 
 
 Then, for the gravitational signal, we use the same newtonian approximation that we used before. 
 The frequency of the gravitational wave signal is $\displaystyle f_{GW} = 2f = \frac{1}{\pi}\sqrt{\frac{GM]{a^3}}$
-The signal is given by the equation $\displaystyle h(t) = h_0 \cos(\phi)$ where :
+The signal is given by the equation $\displaystyle h(t) = h_0 \cos(\phi(t))$ where :
 
  - $\displaystyle h_0 = 4 \frac{G}{c^2} \frac{\mathcal{M}_c}{R} \big(\frac{G\pi \mathcal{M}_c}{c^3} f \big)$
  - $\displaystyle \phi = 2\pi (ft + \frac{1}{2} \dot{f}t^2)$
