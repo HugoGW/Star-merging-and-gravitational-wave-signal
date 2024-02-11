@@ -8,13 +8,14 @@ Let's start with pen and paper to numerically simulate the Newtonian equations f
 
 We use the 2nd Newton's law : $\displaystyle \sum_k \vec{F}_k = m \vec{a}$ which gives us the equation $\displaystyle m_1 \vec{a} = G \frac{m_1 m_2}{r^3} \vec{r} - k \vec{v}$
 
-In cartesian coordinates, the system of equation is quite the same that the one from the solar system : 
+In cartesian coordinates, the system of equation for the star 1 is quite the same that the one from the solar system : 
 
- - $\displaystyle \frac{d^2x}{dt^2} = -\frac{GM}{r^2} \cos(\theta) - k(r) \frac{dx}{dt}$
- - $\displaystyle \frac{d^2y}{dt^2} = -\frac{GM}{r^2} \sin(\theta) - k(r) \frac{dy}{dt}$
+ - $\displaystyle \frac{d^2x}{dt^2} = -\frac{Gm_2}{r^2} \cos(\theta) - k(r) \frac{dx}{dt}$
+ - $\displaystyle \frac{d^2y}{dt^2} = -\frac{Gm_2}{r^2} \sin(\theta) - k(r) \frac{dy}{dt}$
 
 where $r = \sqrt{x^2 + y^2}$, $\cos(\theta) = \frac{x}{r}$ and $\sin(\theta) = \frac{y}{r}$. 
 The friction force $\vec{f} = -k(r) \vec{v}$ makes appear the term $k(r) \sim \frac{1}{t_m} e^{-r/a}$ which is the coefficient of friction.
+We do not take into account the mass in the coefficient of friction, we assumed that $\displaystyle \frac{k(r)}{m_i} \rightarrow k(r)$, otherwise the merge will take too long.
 
 We numerically solve this differential equation with odeint from the scipy.integrate library according to our initial conditions $r_0 = \pm a(1-e) \frac{m_{1/2}}{m_1+m_2}$ and $v_0 = \pm \sqrt{\frac{GM}{a}}$. 
 
@@ -36,11 +37,16 @@ The more the distance deacreases because of the friction, the more the velocity 
         star_merged.set_data([], [])  # Clear merged star data
 
 
-Then, for the gravitational signal, we use the same newtonian approximation that we used before. The frequency of the gravitational wave signal is $\displaystyle f_{GW} = 2f = \frac{1}{\pi}\sqrt{\frac{GM]{a^3}}$
+Then, for the gravitational signal, we use the same newtonian approximation that we used before. 
+The frequency of the gravitational wave signal is $\displaystyle f_{GW} = 2f = \frac{1}{\pi}\sqrt{\frac{GM]{a^3}}$
 The signal is given by the equation $\displaystyle h(t) = h_0 \cos(\phi)$ where :
 
  - $\displaystyle h_0 = 4 \frac{G}{c^2} \frac{\mathcal{M}_c}{R} \big(\frac{G\pi \mathcal{M}_c}{c^3} f \big)$
  - $\displaystyle \phi = 2\pi (ft + \frac{1}{2} \dot{f}t^2)$
+
+
+
+
 
 
 
