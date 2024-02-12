@@ -41,10 +41,10 @@ Then, for the gravitational signal, we use the same newtonian approximation that
 For a compact binary with masses $m_1$ and $m_2$ in a circular orbit with gravitational wave frequency $\displaystyle f_{GW} = 2f = \frac{1}{\pi}\sqrt{\frac{GM}{a^3}}$
 then :
 
- - the Chirp Mass : $\mathcal{M}_c = \frac{(m_1m_2)^{3/5}}{(m_1 + m_2)^{1/5}}$
+ - the Chirp Mass : $\displaystyle \mathcal{M}_c = \frac{(m_1m_2)^{3/5}}{(m_1 + m_2)^{1/5}}$
  - the Scaling Amplitude : $\displaystyle h_0 = 4 \frac{G}{c^2} \frac{\mathcal{M}_c}{R} \big(\frac{G\pi \mathcal{M}_c}{c^3} f \big) ^{2/3}$
- - Chirp $\dot{f} = \frac{96c^3 f}{5G\mathcal{M}_c} \big(\frac{G\pi \mathcal{M}_c}{c^3} f \big) ^{8/3}$
- - the gravitational phase : $\phi(t) = 2\pi (ft + \frac{1}{2} \dot{f}t^2)$
+ - Chirp $\displaystyle \dot{f} = \frac{96c^3 f}{5G\mathcal{M}_c} \big(\frac{G\pi \mathcal{M}_c}{c^3} f \big) ^{8/3}$
+ - the gravitational phase : $\displaystyle \phi(t) = 2\pi (ft + \frac{1}{2} \dot{f}t^2)$
 
 
 The signal is given by the equation $\displaystyle h(t) = h_0 \cos(\phi(t))$ where :
@@ -54,9 +54,24 @@ The signal is given by the equation $\displaystyle h(t) = h_0 \cos(\phi(t))$ whe
 
 The waveform is given by : 
 
-$h(t) = h_0 \cos(\phi(t)) = h_0 \cos(2\pi ft + \pi  \dot{f}t^2)$
+$\displaystyle h(t) = h_0 \cos(\phi(t)) = h_0 \cos(2\pi ft + \pi  \dot{f}t^2)$
+
+    def h(t):
+    f_GW = [np.sqrt(G*M/distances[i]**3)/(np.pi) for i, dist in enumerate(distances)]
+    h0 = [4*G*Mc/(c**2*R) * (G/c**3 * np.pi * f_GW[i]* Mc)**(2/3) for i, dist in enumerate(distances)]
+    dfdt = [96/5 * c**3/G * f_GW[i]/Mc * (G/c**3 * np.pi * f_GW[i] * Mc)**(8/3) for i, dist in enumerate(distances)]
+    ϕ = [2*np.pi*(f_GW[i]*t[i] + 0.5 * dfdt[i] * t[i]**2) for i, dist in enumerate(distances)]
+    
+    h = [0 if dist < fusion_distance else h0[i]*np.cos(ϕ[i]) for i, dist in enumerate(distances)]
+    return h
 
 Finally, we animate the movement of the two stars as they approach each other and plot the expected gravitational signal using the data collected from the simulation. We take the distance $r[i]$ between the two stars and implement it into the signal $h[i]$. Thus, we end up with a gravitational signal reflecting the dynamics of our star fusion.
+
+<img width="486" alt="image" src="https://github.com/HugoGW/Star-merging-and-gravitational-wave-signal/assets/140922475/5b090e9f-bd35-4a13-833f-987991ee6bab">
+
+https://github.com/HugoGW/Star-merging-and-gravitational-wave-signal/assets/140922475/e2458a05-a4ff-4916-b206-112dd749745d
+
+
 
 
 
