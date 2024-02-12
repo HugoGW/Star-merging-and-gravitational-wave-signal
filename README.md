@@ -38,13 +38,24 @@ The more the distance deacreases because of the friction, the more the velocity 
 
 
 Then, for the gravitational signal, we use the same newtonian approximation that we used before. 
-The frequency of the gravitational wave signal is $\displaystyle f_{GW} = 2f = \frac{1}{\pi}\sqrt{\frac{GM}{a^3}}$
+For a compact binary with masses $m_1$ and $m_2$ in a circular orbit with gravitational wave frequency $\displaystyle f_{GW} = 2f = \frac{1}{\pi}\sqrt{\frac{GM}{a^3}}$
+then :
+
+ - the Chirp Mass : $\mathcal{M}_c = \frac{(m_1m_2)^{3/5}}{(m_1 + m_2)^{1/5}}
+ - the Scaling Amplitude : $\displaystyle h_0 = 4 \frac{G}{c^2} \frac{\mathcal{M}_c}{R} \big(\frac{G\pi \mathcal{M}_c}{c^3} f \big) ^{2/3}$
+ - Chirp $\dot{f} = \frac{96c^3 f}{5G\mathcal{M}_c} \big(\frac{G\pi \mathcal{M}_c}{c^3} f \big) ^{8/3}$
+ - the gravitational phase : $\phi(t) = 2\pi (ft + \frac{1}{2} \dot{f}t^2)
+
+
+
 The signal is given by the equation $\displaystyle h(t) = h_0 \cos(\phi(t))$ where :
 
- - $\displaystyle h_0 = 4 \frac{G}{c^2} \frac{\mathcal{M}_c}{R} \big(\frac{G\pi \mathcal{M}_c}{c^3} f \big)$
+ - $\displaystyle h_0 = 4 \frac{G}{c^2} \frac{\mathcal{M}_c}{R} \big(\frac{G\pi \mathcal{M}_c}{c^3} f \big) ^{2/3}$
  - $\displaystyle \phi = 2\pi (ft + \frac{1}{2} \dot{f}t^2)$
 
+The waveform is given by : 
 
+$h(t) = h_0 \cos(\phi(t)) = h_0 \cos(2\pi ft + \pi  \dot{f}t^2)$
 
 
 
