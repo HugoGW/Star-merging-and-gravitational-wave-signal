@@ -67,7 +67,8 @@ $\displaystyle h(t) = h_0 \cos(\phi(t)) = h_0 \cos(2\pi ft + \pi  \dot{f}t^2)$
 
 Finally, we animate the movement of the two stars as they approach each other and plot the expected gravitational signal using the data collected from the simulation. We take the distance $r[i]$ between the two stars and implement it into the signal $h[i]$. Thus, we end up with a gravitational signal reflecting the dynamics of our star fusion.
 
-<img width="486" alt="image" src="https://github.com/HugoGW/Star-merging-and-gravitational-wave-signal/assets/140922475/5b090e9f-bd35-4a13-833f-987991ee6bab">
+<img width="454" alt="image" src="https://github.com/HugoGW/Star-merging-and-gravitational-wave-signal/assets/140922475/00a57229-761e-4f42-aa7c-b03b54872e7a">
+
 
 https://github.com/HugoGW/Star-merging-and-gravitational-wave-signal/assets/140922475/e2458a05-a4ff-4916-b206-112dd749745d
 
