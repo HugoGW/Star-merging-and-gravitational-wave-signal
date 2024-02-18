@@ -129,9 +129,9 @@ ax2.set_ylim(min(h(t_values)), max(h(t_values)))
 ax2.set_facecolor("black")
 
 ax2.plot(t_values, h(t_values), color="white")
-ax2.set_title("Distance between stars over time", color="white")
+ax2.set_title("Gravitational wave signal (Newtonian approximation)", color="white")
 ax2.set_xlabel("Time", color="white")
-ax2.set_ylabel("Distance", color="white")
+ax2.set_ylabel("Strain", color="white")
 
 # Customize ticks and spines for the signal plot
 ax2.tick_params(axis="x", colors="white")
