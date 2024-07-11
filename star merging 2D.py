@@ -13,14 +13,15 @@ M = m1 + m2
 Mc = (m1 * m2) ** (0.6) / M ** 0.2
 µ = m1 * m2 / M
 AU = 150 * 10 ** 9
-a = AU / 10 ** 3.2  # in AU
+a = AU / 10 ** 4.5  # in AU
 e = 0  # eccentricity
 T = 2 * np.pi * np.sqrt(a ** 3 / (G * M))
-tm = 1000  # merger time
+tm = 50  # merger time
 fusion_distance = a / 27  # distance below which stars will merge
 R = 500 * 3.086 * 10 ** (19)  # distance of observation 500Mpc
-α = 2
-β = 1
+α = 4.1
+β = 4
+γ = 1
 
 
 def v(a):
@@ -36,7 +37,7 @@ def distance(x1, y1, x2, y2):
 
 
 def friction_coefficient(r, t):
-    return β / (t * np.exp(α * r / a))  # Avoid division by zero
+    return β / ((t+γ*tm)**(3/5) * np.exp(α * r / a))  # Avoid division by zero
 
 
 def equation(r, t):
@@ -65,7 +66,7 @@ def equation(r, t):
 
 
 def h(t):
-    f_GW = [np.sqrt(G * M / distances[i] ** 3) / (np.pi) for i, dist in enumerate(distances)]
+    f_GW = [np.sqrt(G * M / (distances[i] + 1e-10) ** 3) / (np.pi) for i, dist in enumerate(distances)]
     h0 = [
         4 * G * Mc / (c ** 2 * R) * (G / c ** 3 * np.pi * f_GW[i] * Mc) ** (2 / 3) for i, dist in enumerate(distances)
     ]
@@ -100,7 +101,7 @@ def update(frame):
 
 initial_conditions = [a * (1 - e) * m1 / M, 0, 0, v(a), -a * (1 - e) * m2 / M, 0, 0, -v(a)]
 
-t_values = np.arange(0.01, α * tm / β, 1)  # One orbital period
+t_values = np.arange(0.0, tm/2, 0.01)  # One orbital period
 
 solution = odeint(equation, initial_conditions, t_values)
 
@@ -124,12 +125,12 @@ star_merged, = ax1.plot([], [], "o", markersize=33, color="gray")
 
 # Lower plot for signal
 ax2 = fig.add_subplot(gs[1])
-ax2.set_xlim(0, α * tm / β)
+ax2.set_xlim(0, tm/2)
 ax2.set_ylim(min(h(t_values)), max(h(t_values)))
 ax2.set_facecolor("black")
 
 ax2.plot(t_values, h(t_values), color="white")
-ax2.set_title("Gravitational wave signal (Newtonian approximation)", color="white")
+ax2.set_title("Strain over time", color="white")
 ax2.set_xlabel("Time", color="white")
 ax2.set_ylabel("Strain", color="white")
 
